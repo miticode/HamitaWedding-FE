@@ -1,11 +1,17 @@
+"use client"
+
+import Footer from "./components/footer/page";
+import Header from "./components/header/page";
+import Home from "./home/page";
 
 
-
-export default function Home() {
+export default function Main() {
   return (
-   <h1 className="bg-red-400">Hello World
-  
-   </h1>
+  <div>
+    <Header/>
+    <Home/>
+    <Footer/>
+  </div>
   
   );
 }
