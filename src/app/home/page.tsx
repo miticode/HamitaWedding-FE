@@ -30,6 +30,9 @@ const Home = () => {
       </div>
       <div className="text-xl font-bold ">VÌ BẠN XỨNG ĐÁNG!</div>
     </div>
+    <div>
+      
+    </div>
     </div>
   );
 };
