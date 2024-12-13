@@ -3,6 +3,11 @@ import React from "react";
 import { FaMapMarkerAlt, FaPhoneAlt, FaEnvelope, FaGlobe, FaClock, FaFacebook, FaInstagram, FaYoutube, FaTiktok } from 'react-icons/fa';
 
 const Footer = () => {
+  const socialLinks = {
+    messenger: "https://m.me/hamitaweddinghouse", // Your Messenger link
+    facebook: "https://www.facebook.com/hamitaweddinghouse",
+    phone: "tel:0982341989" // Your phone number
+  };
   return (
     <div className="w-full bg-[#181818] text-white py-10">
       <div className="container mx-auto flex flex-col md:flex-row justify-between items-start md:items-center px-4">
@@ -88,6 +93,7 @@ const Footer = () => {
           </a>
         </div>
       </div>
+     
     </div>
   );
 };
