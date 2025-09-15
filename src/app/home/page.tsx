@@ -2,11 +2,50 @@
 
 import Carousel from "@/app/components/carousel/page";
 import Image from "next/image";
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import { FaHeart, FaCamera, FaVideo, FaTshirt } from "react-icons/fa";
 
 
 const Home = () => {
+  // Respect user preference for reduced motion
+  const prefersReducedMotion = useReducedMotion();
+
+  // Variants helpers
+  const containerVariants = {
+    hidden: { opacity: 0, y: prefersReducedMotion ? 0 : 16 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.5,
+        ease: "easeOut",
+        when: "beforeChildren",
+        staggerChildren: prefersReducedMotion ? 0 : 0.08,
+      },
+    },
+  } as const;
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: prefersReducedMotion ? 0 : 12 },
+    visible: (i = 0) => ({
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.45,
+        ease: "easeOut",
+        delay: prefersReducedMotion ? 0 : i * 0.04,
+      },
+    }),
+  } as const;
+
+  const dividerVariants = {
+    hidden: { opacity: 0, scaleX: 0 },
+    visible: {
+      opacity: 1,
+      scaleX: 1,
+      transition: { duration: 0.5, ease: "easeOut" },
+    },
+  } as const;
  
   const services = [
     {
@@ -62,51 +101,89 @@ const Home = () => {
     >
       <div className="pt-24 sm:pt-28">
         {/* Carousel */}
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <Carousel />
-        </div>
+        <motion.div
+          className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.2 }}
+          variants={containerVariants}
+        >
+          <motion.div variants={itemVariants}>
+            <Carousel />
+          </motion.div>
+        </motion.div>
 
         {/* Hero Section */}
         <motion.div
-          initial={{ y: 20, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ delay: 0.2 }}
           className="mx-auto mt-8 sm:mt-10 max-w-4xl px-4 sm:px-6"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.3 }}
+          variants={containerVariants}
         >
-          <div className="rounded-2xl bg-white/80 backdrop-blur-sm shadow-xl p-6 sm:p-8 text-center">
-            <h1 className="text-2xl sm:text-3xl md:text-4xl font-extrabold mb-4 sm:mb-6 text-gray-900 tracking-tight">
+          <motion.div
+            variants={itemVariants}
+            className="rounded-2xl bg-white/80 backdrop-blur-sm shadow-xl p-6 sm:p-8 text-center"
+          >
+            <motion.h1
+              variants={itemVariants}
+              className="text-2xl sm:text-3xl md:text-4xl font-extrabold mb-4 sm:mb-6 text-gray-900 tracking-tight"
+            >
               HAMITA WEDDING HOUSE
-            </h1>
-            <div className="h-1 w-24 sm:w-32 bg-gradient-to-r from-pink-400 to-pink-600 mx-auto mb-6 sm:mb-8 rounded-full"></div>
+            </motion.h1>
+            <motion.div
+              className="h-1 w-24 sm:w-32 bg-gradient-to-r from-pink-400 to-pink-600 mx-auto mb-6 sm:mb-8 rounded-full origin-center"
+              variants={dividerVariants}
+            />
 
             <div className="space-y-4 sm:space-y-6 max-w-3xl mx-auto">
-              <p className="text-base sm:text-lg md:text-xl leading-relaxed">
+              <motion.p
+                variants={itemVariants}
+                className="text-base sm:text-lg md:text-xl leading-relaxed"
+              >
                 <span className="font-semibold text-pink-600">Hamita Wedding</span>
                 <span className="mx-2">-</span>
                 <span className="text-gray-700">
                   Đơn vị có hệ sinh thái cưới lớn tại Long An, sở hữu phim trường độc quyền với diện tích 1.200m².
                 </span>
-              </p>
+              </motion.p>
 
-              <p className="text-sm sm:text-base text-gray-600 leading-relaxed">
+              <motion.p
+                variants={itemVariants}
+                className="text-sm sm:text-base text-gray-600 leading-relaxed"
+              >
                 Hamita là nơi sẵn sàng lắng nghe và thấu hiểu câu chuyện của khách hàng, đồng hành để lưu giữ những khoảnh khắc đáng nhớ nhất.
-              </p>
+              </motion.p>
             </div>
-          </div>
+          </motion.div>
         </motion.div>
 
         {/* Services Section */}
         <section className="py-12 sm:py-16">
-          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-            <h2 className="text-2xl sm:text-3xl font-bold text-center mb-8 sm:mb-12 text-gray-900">
+          <motion.div
+            className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.2 }}
+            variants={containerVariants}
+          >
+            <motion.h2
+              variants={itemVariants}
+              className="text-2xl sm:text-3xl font-bold text-center mb-8 sm:mb-12 text-gray-900"
+            >
               BẢNG GIÁ DỊCH VỤ
-            </h2>
+            </motion.h2>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+            <motion.div
+              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8"
+              variants={containerVariants}
+            >
               {services.map((service, index) => (
                 <motion.article
                   key={index}
-                  whileHover={{ scale: 1.02 }}
+                  custom={index}
+                  variants={itemVariants}
+                  whileHover={{ scale: 1.02, y: -4 }}
                   transition={{ type: "spring", stiffness: 300, damping: 20 }}
                   className="group relative overflow-hidden rounded-2xl shadow-lg focus-within:ring-2 focus-within:ring-pink-500 focus-within:ring-offset-2 focus-within:ring-offset-white bg-white"
                 >
@@ -120,15 +197,28 @@ const Home = () => {
                       className="object-cover transition-transform duration-300 group-hover:scale-105"
                       priority={index < 2}
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent z-10" />
+                    <motion.div
+                      aria-hidden
+                      initial={{ opacity: 0.4 }}
+                      whileHover={{ opacity: 0.55 }}
+                      transition={{ duration: 0.3 }}
+                      className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent z-10"
+                    />
                   </div>
 
                   <div className="relative z-20 -mt-24 sm:-mt-28 md:-mt-24 lg:-mt-28 px-4 sm:px-5 md:px-6 pb-5 sm:pb-6">
-                    <div className="rounded-xl bg-white/90 backdrop-blur p-4 sm:p-5 shadow-lg">
+                    <motion.div
+                      variants={itemVariants}
+                      className="rounded-xl bg-white/90 backdrop-blur p-4 sm:p-5 shadow-lg"
+                    >
                       <div className="flex items-start gap-3">
-                        <span className="mt-0.5 text-pink-500 text-xl sm:text-2xl">
+                        <motion.span
+                          whileHover={{ rotate: 6, scale: 1.05 }}
+                          transition={{ type: "spring", stiffness: 300, damping: 15 }}
+                          className="mt-0.5 text-pink-500 text-xl sm:text-2xl"
+                        >
                           {service.icon}
-                        </span>
+                        </motion.span>
                         <div>
                           <h3 className="text-lg sm:text-xl font-semibold text-gray-900">
                             {service.title}
@@ -138,12 +228,12 @@ const Home = () => {
                           </p>
                         </div>
                       </div>
-                    </div>
+                    </motion.div>
                   </div>
                 </motion.article>
               ))}
-            </div>
-          </div>
+            </motion.div>
+          </motion.div>
         </section>
       </div>
     </motion.div>
