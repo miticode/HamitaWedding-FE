@@ -111,16 +111,30 @@ const Cost = () => {
 
         {/* Quick nav chips */}
         <div className="mt-6 flex flex-wrap justify-center gap-2 sm:gap-3">
-          {sections.map((s) =>
-            s.id === "album" ? (
-              <Link
-                key={`chip-${s.id}`}
-                href="/albumprice"
-                className="inline-flex items-center gap-2 rounded-full border border-pink-300 bg-white/70 px-3 py-1.5 text-sm text-pink-700 hover:bg-pink-50 transition"
-              >
-                {s.title}
-              </Link>
-            ) : (
+          {sections.map((s) => {
+            if (s.id === "album") {
+              return (
+                <Link
+                  key={`chip-${s.id}`}
+                  href="/albumprice"
+                  className="inline-flex items-center gap-2 rounded-full border border-pink-300 bg-white/70 px-3 py-1.5 text-sm text-pink-700 hover:bg-pink-50 transition"
+                >
+                  {s.title}
+                </Link>
+              );
+            }
+            if (s.id === "vu-quy") {
+              return (
+                <Link
+                  key={`chip-${s.id}`}
+                  href="/vuquyprice"
+                  className="inline-flex items-center gap-2 rounded-full border border-pink-300 bg-white/70 px-3 py-1.5 text-sm text-pink-700 hover:bg-pink-50 transition"
+                >
+                  {s.title}
+                </Link>
+              );
+            }
+            return (
               <a
                 key={`chip-${s.id}`}
                 href={`#${s.id}`}
@@ -128,8 +142,8 @@ const Cost = () => {
               >
                 {s.title}
               </a>
-            )
-          )}
+            );
+          })}
         </div>
       </section>
 
@@ -148,10 +162,15 @@ const Cost = () => {
                       >
                         {s.title}
                       </Link>
-                    ) : (
-                      <h2 className="text-xl sm:text-2xl font-bold text-gray-900">
+                    ) : s.id === "vu-quy" ? (
+                      <Link
+                        href="/vuquyprice"
+                        className="text-xl sm:text-2xl font-bold text-gray-900 hover:text-pink-600 transition-colors"
+                      >
                         {s.title}
-                      </h2>
+                      </Link>
+                    ) : (
+                      <h2 className="text-xl sm:text-2xl font-bold text-gray-900">{s.title}</h2>
                     )}
                     <p className="mt-1 text-gray-600">{s.description}</p>
                   </div>
@@ -159,6 +178,13 @@ const Cost = () => {
                     {s.id === "album" ? (
                       <Link
                         href="/albumprice"
+                        className="inline-flex items-center rounded-full bg-pink-600 px-4 py-2 text-white text-sm font-medium shadow hover:bg-pink-700 transition"
+                      >
+                        Xem chi tiết
+                      </Link>
+                    ) : s.id === "vu-quy" ? (
+                      <Link
+                        href="/vuquyprice"
                         className="inline-flex items-center rounded-full bg-pink-600 px-4 py-2 text-white text-sm font-medium shadow hover:bg-pink-700 transition"
                       >
                         Xem chi tiết

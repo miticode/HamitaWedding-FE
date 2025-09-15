@@ -36,7 +36,7 @@ const Header = () => {
 
   const costMenu = [
     { label: "Gói chụp Album", href: "/albumprice" },
-    { label: "Gói Vu Quy", href: "/cost#vu-quy" },
+    { label: "Gói Vu Quy", href: "/vuquyprice" },
     { label: "Gói Đính Hôn/Tân Hôn", href: "/cost#dinh-hon-tan-hon" },
     { label: "Dịch vụ cưới trọn gói", href: "/cost#goi-tron-goi" },
     { label: "Ngày cưới hỏi", href: "/cost#ngay-cuoi-hoi" },
@@ -46,6 +46,8 @@ const Header = () => {
 
   const isActive = (href: string) => {
     if (href === "/") return pathname === "/";
+    // Consider vuquyprice as part of 'BẢNG GIÁ'
+    if (href === "/cost") return pathname?.startsWith("/cost") || pathname?.startsWith("/vuquyprice");
     return pathname?.startsWith(href);
   };
 
