@@ -134,6 +134,17 @@ const Cost = () => {
                 </Link>
               );
             }
+             if (s.id === "dinh-hon-tan-hon") {
+              return (
+                <Link
+                  key={`chip-${s.id}`}
+                  href="/dhthprice"
+                  className="inline-flex items-center gap-2 rounded-full border border-pink-300 bg-white/70 px-3 py-1.5 text-sm text-pink-700 hover:bg-pink-50 transition"
+                >
+                  {s.title}
+                </Link>
+              );
+            }
             return (
               <a
                 key={`chip-${s.id}`}
@@ -169,7 +180,14 @@ const Cost = () => {
                       >
                         {s.title}
                       </Link>
-                    ) : (
+                    ) : s.id === "dinh-hon-tan-hon" ? (
+                      <Link
+                        href="/dhthprice"
+                        className="text-xl sm:text-2xl font-bold text-gray-900 hover:text-pink-600 transition-colors"
+                      >
+                        {s.title}
+                      </Link>
+                    ): (
                       <h2 className="text-xl sm:text-2xl font-bold text-gray-900">{s.title}</h2>
                     )}
                     <p className="mt-1 text-gray-600">{s.description}</p>
@@ -185,6 +203,13 @@ const Cost = () => {
                     ) : s.id === "vu-quy" ? (
                       <Link
                         href="/vuquyprice"
+                        className="inline-flex items-center rounded-full bg-pink-600 px-4 py-2 text-white text-sm font-medium shadow hover:bg-pink-700 transition"
+                      >
+                        Xem chi tiết
+                      </Link>
+                    ): s.id === "dinh-hon-tan-hon" ? (
+                      <Link
+                        href="/dhthprice"
                         className="inline-flex items-center rounded-full bg-pink-600 px-4 py-2 text-white text-sm font-medium shadow hover:bg-pink-700 transition"
                       >
                         Xem chi tiết

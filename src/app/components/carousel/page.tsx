@@ -10,8 +10,12 @@ const Carousel = () => {
   const [isHovered, setIsHovered] = useState(false);
   const router = useRouter();
 
-  // Autoplay duration in ms (kept consistent with progress bar)
-  const AUTOPLAY_MS = 5000;
+  // Autoplay timing
+  // PROGRESS_MS controls the visual progress bar duration
+  // After the progress finishes, we wait HOLD_MS before moving to the next slide
+  const PROGRESS_MS = 5000;
+  const HOLD_MS = 2000;
+  const AUTOPLAY_MS = PROGRESS_MS + HOLD_MS;
   const SWIPE_THRESHOLD = 60; // px
 
   const slides = [
@@ -37,12 +41,13 @@ const Carousel = () => {
     setCurrentIndex((prev) => (prev === slides.length - 1 ? 0 : prev + 1));
   };
 
+  // Autoplay per slide with timeout, so it resets on slide change
   useEffect(() => {
     if (!isHovered) {
-      const interval = setInterval(nextSlide, AUTOPLAY_MS);
-      return () => clearInterval(interval);
+      const timeout = setTimeout(nextSlide, AUTOPLAY_MS);
+      return () => clearTimeout(timeout);
     }
-  }, [isHovered]);
+  }, [isHovered, currentIndex]);
 
   const slideVariants = {
     enter: {
@@ -127,13 +132,13 @@ const Carousel = () => {
       role="region"
       aria-label="Bộ sưu tập ảnh cưới"
     >
-      {/* Progress Bar */}
+      {/* Progress Bar (animates only for PROGRESS_MS, then holds full) */}
       <div className="absolute top-0 left-0 right-0 z-20 h-1 bg-white/30">
         <motion.div
           className="h-full bg-white"
           initial={{ width: "0%" }}
           animate={{ width: "100%" }}
-          transition={{ duration: AUTOPLAY_MS / 1000, ease: "linear" }}
+          transition={{ duration: PROGRESS_MS / 1000, ease: "linear" }}
           key={currentIndex}
         />
       </div>

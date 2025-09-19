@@ -100,9 +100,9 @@ const Home = () => {
       className="min-h-screen bg-gradient-to-b from-white to-pink-50"
     >
       <div className="pt-24 sm:pt-28">
-        {/* Carousel */}
+        {/* Carousel - full width */}
         <motion.div
-          className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8"
+          className="w-full"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.2 }}

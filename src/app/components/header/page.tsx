@@ -37,7 +37,7 @@ const Header = () => {
   const costMenu = [
     { label: "Gói chụp Album", href: "/albumprice" },
     { label: "Gói Vu Quy", href: "/vuquyprice" },
-    { label: "Gói Đính Hôn/Tân Hôn", href: "/cost#dinh-hon-tan-hon" },
+    { label: "Gói Đính Hôn/Tân Hôn", href: "/dhthprice" },
     { label: "Dịch vụ cưới trọn gói", href: "/cost#goi-tron-goi" },
     { label: "Ngày cưới hỏi", href: "/cost#ngay-cuoi-hoi" },
     { label: "Chụp ảnh cổng", href: "/cost#chup-anh-cong" },
