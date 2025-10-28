@@ -31,7 +31,7 @@ const Header = () => {
     { label: "TRANG PHỤC CƯỚI", href: "#" },
     { label: "ALBUM - CONCEPT", href: "#" },
     { label: "TIN TỨC", href: "#" },
-    { label: "LIÊN HỆ", href: "#" },
+    { label: "LIÊN HỆ", href: "/contact" },
   ];
 
   const costMenu = [
