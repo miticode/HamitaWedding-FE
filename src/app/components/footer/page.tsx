@@ -1,4 +1,5 @@
 "use client";
+import Link from "next/link";
 import React from "react";
 import { FaMapMarkerAlt, FaPhoneAlt, FaEnvelope, FaGlobe, FaClock, FaFacebook, FaInstagram, FaYoutube, FaTiktok } from 'react-icons/fa';
 
@@ -39,7 +40,9 @@ const Footer = () => {
         <div className="mb-8 md:mb-0">
           <h2 className="text-xl font-semibold mb-4">THÔNG TIN THÊM</h2>
           <ul>
-            <li className="mb-2">Giới Thiệu</li>
+            <Link href="/about">
+              <li className="mb-2">Giới Thiệu</li>
+            </Link>
             <li className="mb-2">Liên Hệ</li>
             <li className="mb-2">Đội ngũ chuyên gia</li>
             <li className="mb-2">Chính sách bảo mật</li>

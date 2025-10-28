@@ -144,7 +144,7 @@ const Home = () => {
                 <span className="font-semibold text-pink-600">Hamita Wedding</span>
                 <span className="mx-2">-</span>
                 <span className="text-gray-700">
-                  Đơn vị có hệ sinh thái cưới lớn tại Long An, sở hữu phim trường độc quyền với diện tích 1.200m².
+                  Đơn vị có hệ sinh thái cưới lớn tại Tây Ninh, sở hữu phim trường độc quyền với diện tích 1.200m².
                 </span>
               </motion.p>
 
