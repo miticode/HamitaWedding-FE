@@ -43,7 +43,9 @@ const Footer = () => {
             <Link href="/about">
               <li className="mb-2">Giới Thiệu</li>
             </Link>
+            <Link href="/contact">
             <li className="mb-2">Liên Hệ</li>
+            </Link>
             <li className="mb-2">Đội ngũ chuyên gia</li>
             <li className="mb-2">Chính sách bảo mật</li>
             <li className="mb-2">Chính sách thanh toán</li>
