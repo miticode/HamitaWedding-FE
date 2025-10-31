@@ -30,7 +30,7 @@ const Header = () => {
     { label: "BẢNG GIÁ", href: "/cost" },
     { label: "TRANG PHỤC CƯỚI", href: "#" },
     { label: "ALBUM - CONCEPT", href: "#" },
-    { label: "TIN TỨC", href: "#" },
+    { label: "TIN TỨC", href: "/news" },
     { label: "LIÊN HỆ", href: "/contact" },
   ];
 

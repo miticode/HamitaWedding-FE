@@ -1,8 +1,16 @@
 "use client";
-import React from 'react';
+import React from "react";
 import { motion, useReducedMotion } from "framer-motion";
-import { FaPhone, FaEnvelope, FaMapMarkerAlt, FaClock, FaFacebook, FaInstagram, FaYoutube } from 'react-icons/fa';
-import Image from 'next/image';
+import {
+  FaPhone,
+  FaEnvelope,
+  FaMapMarkerAlt,
+  FaClock,
+  FaFacebook,
+  FaInstagram,
+  FaYoutube,
+} from "react-icons/fa";
+import Image from "next/image";
 
 const Contact = () => {
   const prefersReducedMotion = useReducedMotion();
@@ -50,7 +58,7 @@ const Contact = () => {
       title: "Địa chỉ",
       details: [
         "123 Đường Cây Thông, Phường Hiệp Ninh",
-        "Thành phố Tây Ninh, Tỉnh Tây Ninh"
+        "Thành phố Tây Ninh, Tỉnh Tây Ninh",
       ],
     },
     {
@@ -61,8 +69,18 @@ const Contact = () => {
   ];
 
   const socialLinks = [
-    { icon: <FaFacebook />, name: "Facebook", href: "#", color: "text-blue-600" },
-    { icon: <FaInstagram />, name: "Instagram", href: "#", color: "text-pink-600" },
+    {
+      icon: <FaFacebook />,
+      name: "Facebook",
+      href: "#",
+      color: "text-blue-600",
+    },
+    {
+      icon: <FaInstagram />,
+      name: "Instagram",
+      href: "#",
+      color: "text-pink-600",
+    },
     { icon: <FaYoutube />, name: "YouTube", href: "#", color: "text-red-600" },
   ];
 
@@ -138,7 +156,11 @@ const Contact = () => {
                   <div className="flex items-start gap-4">
                     <motion.div
                       whileHover={{ rotate: 6, scale: 1.05 }}
-                      transition={{ type: "spring", stiffness: 300, damping: 15 }}
+                      transition={{
+                        type: "spring",
+                        stiffness: 300,
+                        damping: 15,
+                      }}
                       className="mt-1 text-pink-500 text-2xl sm:text-3xl"
                     >
                       {item.icon}
@@ -149,7 +171,10 @@ const Contact = () => {
                       </h3>
                       <div className="space-y-2">
                         {item.details.map((detail, detailIndex) => (
-                          <p key={detailIndex} className="text-sm sm:text-base text-gray-600">
+                          <p
+                            key={detailIndex}
+                            className="text-sm sm:text-base text-gray-600"
+                          >
                             {detail}
                           </p>
                         ))}
@@ -173,7 +198,7 @@ const Contact = () => {
                   Hamita Wedding House - Tây Ninh
                 </p>
               </div>
-              
+
               <div className="relative w-full">
                 {/* Map container with proper aspect ratio */}
                 <div className="relative w-full h-0 pb-[56.25%] rounded-xl overflow-hidden shadow-md">
@@ -186,7 +211,7 @@ const Contact = () => {
                     title="Vị trí Hamita Wedding House"
                   />
                 </div>
-                
+
                 {/* Map overlay with address info */}
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
@@ -201,12 +226,18 @@ const Contact = () => {
                         Hamita Wedding House
                       </p>
                       <p className="text-gray-600 text-xs sm:text-sm mt-1">
-                        123 Đường Cây Thông, Phường Hiệp Ninh, Thành phố Tây Ninh, Tỉnh Tây Ninh
+                        123 Đường Cây Thông, Phường Hiệp Ninh, Thành phố Tây
+                        Ninh, Tỉnh Tây Ninh
                       </p>
                       <motion.button
                         whileHover={{ scale: 1.02 }}
                         whileTap={{ scale: 0.98 }}
-                        onClick={() => window.open('https://goo.gl/maps/your-map-link', '_blank')}
+                        onClick={() =>
+                          window.open(
+                            "https://goo.gl/maps/your-map-link",
+                            "_blank"
+                          )
+                        }
                         className="mt-2 text-pink-600 hover:text-pink-700 text-xs sm:text-sm font-medium underline underline-offset-2"
                       >
                         Xem chỉ đường →
@@ -218,10 +249,7 @@ const Contact = () => {
             </motion.div>
 
             {/* Social Media */}
-            <motion.div
-              variants={itemVariants}
-              className="text-center"
-            >
+            <motion.div variants={itemVariants} className="text-center">
               <h3 className="text-xl sm:text-2xl font-semibold text-gray-900 mb-6">
                 THEO DÕI CHÚNG TÔI
               </h3>
@@ -236,9 +264,7 @@ const Contact = () => {
                     className={`${social.color} bg-white/80 backdrop-blur-sm rounded-full p-4 shadow-lg hover:shadow-xl transition-shadow`}
                     aria-label={`Theo dõi trên ${social.name}`}
                   >
-                    <span className="text-2xl sm:text-3xl">
-                      {social.icon}
-                    </span>
+                    <span className="text-2xl sm:text-3xl">{social.icon}</span>
                   </motion.a>
                 ))}
               </div>
@@ -253,7 +279,8 @@ const Contact = () => {
                 SẴN SÀNG TẠO NÊN NGÀY CƯỚI HOÀN HẢO?
               </h3>
               <p className="text-sm sm:text-base mb-6 opacity-90">
-                Liên hệ ngay với chúng tôi để được tư vấn miễn phí về các gói dịch vụ cưới
+                Liên hệ ngay với chúng tôi để được tư vấn miễn phí về các gói
+                dịch vụ cưới
               </p>
               <motion.button
                 whileHover={{ scale: 1.05 }}
